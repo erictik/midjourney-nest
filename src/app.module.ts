@@ -1,14 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import configuration from './config/configuration';
 import { ConfigModule } from '@nestjs/config';
+import { MidjourneyService } from './midjourney.service';
 @Module({
   imports: [ConfigModule.forRoot({
-    load: [configuration],
     isGlobal: true,
   }),],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [MidjourneyService],
 })
 export class AppModule {}
