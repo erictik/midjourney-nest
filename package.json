@@ -1,5 +1,5 @@
 {
-  "name": "nest-typescript-starter",
+  "name": "midjourney-nest",
   "private": true,
   "version": "1.0.0",
   "description": "Nest TypeScript starter repository",
@@ -20,8 +20,10 @@
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.0.5",
     "@nestjs/platform-express": "^9.0.0",
+    "midjourney": "^1.0.9",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5"
   },
