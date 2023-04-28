@@ -1,7 +1,18 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# midjourney-nest
+midjourney-nest is a backend for the MidJourney project. It is a REST API .
+<div align="center">
+	<p>
+		<a href="https://discord.gg/dP95gZ8z"><img src="https://img.shields.io/discord/1082500871478329374?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
+	</p>
+</div>
 
+[discord bot example](https://github.com/erictik/midjourney-discord-wrapper/)
+
+[webui example](https://github.com/erictik/midjourney-ui)
+## Deployed Docker
+```bash
+docker run --env-file .env -p 8080:8080 erictik/midjourney-nest
+```
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
   
