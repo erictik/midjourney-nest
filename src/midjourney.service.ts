@@ -23,11 +23,22 @@ export class MidjourneyService implements OnModuleInit {
     }
     async onModuleInit() {
     }
-    async Imagine(prompt: string,loading?: (uri: string) => void) {
+    async Imagine(prompt: string, loading?: (uri: string) => void) {
         const msg = await this.MJApi.Imagine(prompt, (uri: string) => {
             loading && loading(uri)
         })
         return msg
     }
-
+    async Variation(content: string, index: number, msgId: string, msgHash: string, loading?: (uri: string) => void) {
+        const msg = await this.MJApi.Variation(content, index, msgId, msgHash, (uri: string) => {
+            loading && loading(uri)
+        })
+        return msg
+    }
+    async Upscale(content: string, index: number, msgId: string, msgHash: string, loading?: (uri: string) => void) {
+        const msg = await this.MJApi.Upscale(content, index, msgId, msgHash, (uri: string) => {
+            loading && loading(uri)
+        })
+        return msg
+    }
 }
