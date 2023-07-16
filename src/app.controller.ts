@@ -8,10 +8,8 @@ import {
 } from '@nestjs/common';
 import { MidjourneyService } from './midjourney.service';
 import { FastifyReply } from 'fastify';
-// import { FileInterceptor } from '@nestjs/platform-express';
-import { Response } from 'express';
-import { AvatarBody, OptionMessageBody, PromptMessageBody } from './interfaces';
-@Controller('midjourney')
+import { AvatarBody, PromptMessageBody } from './interfaces';
+@Controller('vs1/midjourney')
 export class AppController {
   constructor(private readonly MjService: MidjourneyService) {}
   @Post('imagine')
