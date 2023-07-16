@@ -1,10 +1,14 @@
 export type PromptMessageBody = {
-  "prompt": string;
-}
+  prompt: string;
+};
 
 export type OptionMessageBody = {
-  "content": string;
-  "index": number;
-  "msgId": string;
-  "msgHash": string;
-}
+  content: string;
+  index: number;
+  msgId: string;
+  msgHash: string;
+};
+
+export type AvatarBody = {
+  img: string;
+};

@@ -23,7 +23,8 @@
     "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.0.5",
     "@nestjs/platform-express": "^9.0.0",
-    "midjourney": "^1.0.10",
+    "@nestjs/platform-fastify": "^10.0.5",
+    "midjourney": "^4.3.5",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5"
   },
