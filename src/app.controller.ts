@@ -8,7 +8,12 @@ import {
 } from '@nestjs/common';
 import { MidjourneyService } from './midjourney.service';
 import { FastifyReply } from 'fastify';
-import { AvatarBody, CustomBody, PromptMessageBody } from './interfaces';
+import {
+  AvatarBody,
+  Base64Body,
+  CustomBody,
+  PromptMessageBody,
+} from './interfaces';
 @Controller('midjourney')
 export class AppController {
   constructor(private readonly MjService: MidjourneyService) {}
@@ -25,6 +30,23 @@ export class AppController {
     });
     res.raw.write(JSON.stringify(msg));
     res.raw.end();
+  }
+
+  @Post('base64')
+  @UseInterceptors()
+  async Base64(@Body() data: Base64Body, @Res() res: FastifyReply) {
+    const uri = await this.MjService.UploadImg(data.img);
+    res.send({ uri });
+    // res.raw.setHeader('Content-Type', 'text/html; charset=utf-8');
+    // res.raw.setHeader('Transfer-Encoding', 'chunked');
+    // res.raw.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    // res.raw.setHeader('Pragma', 'no-cache');
+    // res.raw.setHeader('Expires', '0');
+    // const msg = await this.MjService.Avatar(data.img, (uri, progress) => {
+    //   res.raw.write(JSON.stringify({ uri, progress }));
+    // });
+    // res.raw.write(JSON.stringify(msg));
+    // res.raw.end();
   }
 
   @Post('avatar')

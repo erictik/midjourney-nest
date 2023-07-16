@@ -41,6 +41,11 @@ export class MidjourneyService implements OnModuleInit {
     });
     return msg;
   }
+  async UploadImg(img: string) {
+    const blob = await base64ToBlob(img);
+    const desc = await this.Midjourney.DescribeByBlob(blob);
+    return desc.uri;
+  }
 
   async Custom(
     msgId: string,
