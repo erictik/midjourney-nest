@@ -5,7 +5,7 @@
 # RUN npm run build
 
 FROM node:18-alpine 
-WORKDIR /app
+WORKDIR /dist
 COPY dist ./dist
 COPY package*.json .
 # COPY package*.json .
