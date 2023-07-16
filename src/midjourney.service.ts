@@ -18,6 +18,7 @@ export class MidjourneyService implements OnModuleInit {
       ServerId: this.configService.get<string>('SERVER_ID'),
       ChannelId: this.configService.get<string>('CHANNEL_ID'),
       SalaiToken: this.configService.get<string>('SALAI_TOKEN'),
+      ImageProxy: this.configService.get<string>('IMAGE_PROXY'),
       Debug: true,
       Ws: true,
     });
@@ -34,10 +35,6 @@ export class MidjourneyService implements OnModuleInit {
   async Avatar(img: string, loading?: (uri: string, progress: string) => void) {
     const blob = await base64ToBlob(img);
     const desc = await this.Midjourney.DescribeByBlob(blob);
-    // const DcImage = await this.Midjourney.MJApi.UploadImageByBole(blob);
-    // const nonce = nextNonce();
-    // const httpStatus = await this.Midjourney.MJApi.DescribeApi(DcImage, nonce);
-    // desc.descriptions[0];
     const prompt = `${desc.uri} half body, illustration for a children’s book, simple, cute, full-color, profile picture`;
     const msg = await this.Midjourney.Imagine(prompt, (uri, progress) => {
       loading && loading(uri, progress);

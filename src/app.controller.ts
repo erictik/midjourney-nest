@@ -15,7 +15,7 @@ export class AppController {
   @Post('imagine')
   @UseInterceptors()
   async Imagine(@Body() data: PromptMessageBody, @Res() res: FastifyReply) {
-    res.raw.setHeader('Content-Type', 'text/html');
+    res.raw.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.raw.setHeader('Transfer-Encoding', 'chunked');
     res.raw.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.raw.setHeader('Pragma', 'no-cache');
@@ -30,7 +30,8 @@ export class AppController {
   @Post('avatar')
   @UseInterceptors()
   async Avatar(@Body() data: AvatarBody, @Res() res: FastifyReply) {
-    res.raw.setHeader('Content-Type', 'text/html');
+    res.raw.setHeader('Content-Type', 'text/html; charset=utf-8');
+
     res.raw.setHeader('Transfer-Encoding', 'chunked');
     res.raw.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.raw.setHeader('Pragma', 'no-cache');
@@ -45,12 +46,12 @@ export class AppController {
   @Post('custom')
   @UseInterceptors()
   async Custom(@Body() data: CustomBody, @Res() res: FastifyReply) {
-    res.raw.setHeader('Content-Type', 'text/html');
+    res.raw.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.raw.setHeader('Transfer-Encoding', 'chunked');
     res.raw.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.raw.setHeader('Pragma', 'no-cache');
     res.raw.setHeader('Expires', '0');
-
+    //utf-8
     const msg = await this.MjService.Custom(
       data.msgId,
       data.customId,
