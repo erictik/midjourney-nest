@@ -28,10 +28,11 @@ export class AppController {
 
   @Post('avatar')
   @UseInterceptors()
-  async Avatar(@Body() data: AvatarBody, @Res() res: Response) {
-    this.MjService.Avatar(data.img, (uri: string) => {
-      res.write(JSON.stringify({ uri }));
+  async Avatar(@Body() data: AvatarBody, @Res() res: FastifyReply) {
+    const msg = await this.MjService.Avatar(data.img, (uri: string) => {
+      res.raw.write(JSON.stringify({ uri }));
     });
-    res.end();
+    res.raw.write(JSON.stringify(msg));
+    res.raw.end();
   }
 }
