@@ -31,7 +31,7 @@ export class MidjourneyService implements OnModuleInit {
     });
     return msg;
   }
-  async Avatar(img: string, loading?: (uri: string) => void) {
+  async Avatar(img: string, loading?: (uri: string, progress: string) => void) {
     const blob = await base64ToBlob(img);
     const desc = await this.Midjourney.DescribeByBlob(blob);
     // const DcImage = await this.Midjourney.MJApi.UploadImageByBole(blob);
@@ -39,8 +39,8 @@ export class MidjourneyService implements OnModuleInit {
     // const httpStatus = await this.Midjourney.MJApi.DescribeApi(DcImage, nonce);
     // desc.descriptions[0];
     const prompt = `${desc.uri} half body, illustration for a children’s book, simple, cute, full-color, profile picture`;
-    const msg = await this.Midjourney.Imagine(prompt, (uri: string) => {
-      loading && loading(uri);
+    const msg = await this.Midjourney.Imagine(prompt, (uri, progress) => {
+      loading && loading(uri, progress);
     });
     return msg;
   }

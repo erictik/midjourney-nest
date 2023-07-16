@@ -36,8 +36,8 @@ export class AppController {
     res.raw.setHeader('Pragma', 'no-cache');
     res.raw.setHeader('Expires', '0');
 
-    const msg = await this.MjService.Avatar(data.img, (uri: string) => {
-      res.raw.write(JSON.stringify({ uri }));
+    const msg = await this.MjService.Avatar(data.img, (uri, progress) => {
+      res.raw.write(JSON.stringify({ uri, progress }));
     });
     res.raw.write(JSON.stringify(msg));
     res.raw.end();
