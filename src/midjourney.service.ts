@@ -45,6 +45,23 @@ export class MidjourneyService implements OnModuleInit {
     return msg;
   }
 
+  async Custom(
+    msgId: string,
+    customId: string,
+    flags: number,
+    loading?: (uri: string, progress: string) => void,
+  ) {
+    const msg = await this.Midjourney.Custom({
+      msgId,
+      customId,
+      flags,
+      loading: (uri, progress) => {
+        loading && loading(uri, progress);
+      },
+    });
+    return msg;
+  }
+
   //   async Variation(
   //     content: string,
   //     index: number,
