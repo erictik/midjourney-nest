@@ -29,6 +29,8 @@ export class AppController {
   @Post('avatar')
   @UseInterceptors()
   async Avatar(@Body() data: AvatarBody, @Res() res: FastifyReply) {
+    res.raw.setHeader('Content-Type', 'text/plain');
+    res.raw.setHeader('Transfer-Encoding', 'chunked');
     const msg = await this.MjService.Avatar(data.img, (uri: string) => {
       res.raw.write(JSON.stringify({ uri }));
     });
