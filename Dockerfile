@@ -7,7 +7,7 @@
 FROM node:18-alpine 
 WORKDIR /app
 COPY dist ./dist
-COPY package.json .
+COPY package*.json .
 # COPY package*.json .
 RUN yarn install --production
 EXPOSE 8080
