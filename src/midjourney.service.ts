@@ -22,7 +22,9 @@ export class MidjourneyService implements OnModuleInit {
       Ws: true,
     });
   }
-  async onModuleInit() {}
+  async onModuleInit() {
+    await this.Midjourney.init();
+  }
   async Imagine(prompt: string, loading?: (uri: string) => void) {
     const msg = await this.Midjourney.Imagine(prompt, (uri: string) => {
       loading && loading(uri);
