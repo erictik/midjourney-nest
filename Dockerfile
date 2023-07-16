@@ -9,6 +9,6 @@ WORKDIR /app
 COPY dist ./dist
 COPY package*.json .
 # COPY package*.json .
-RUN npm install --omit=dev
+RUN yarn install --production
 EXPOSE 8080
 CMD [ "node", "dist/main" ]
